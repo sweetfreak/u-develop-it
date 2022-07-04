@@ -1,0 +1,26 @@
+{
+  "name": "u-develop-it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sweetfreak/u-develop-it.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sweetfreak/u-develop-it/issues"
+  },
+  "homepage": "https://github.com/sweetfreak/u-develop-it#readme",
+  "dependencies": {
+    "expres": "^0.0.5",
+    "jest": "^28.1.2",
+    "mysql2": "^2.3.3"
+  }
+}
