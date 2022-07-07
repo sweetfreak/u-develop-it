@@ -1,3 +1,6 @@
+-- THIS ORDER IS IMPORTANT BECAUSE OF HOW WE MAY 
+-- ARRANGE OR USE THE DATA
+DROP TABLE IF EXISTS votes;
 DROP TABLE IF EXISTS candidates;
 DROP TABLE IF EXISTS parties;
 DROP TABLE IF EXISTS voters;
@@ -25,6 +28,21 @@ CREATE TABLE voters (
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE votes (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  voter_id INTEGER NOT NULL,
+  candidate_id INTEGER NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+-- the following could be done in javascript, but
+-- it's best practice to do this here instead
+
+  CONSTRAINT uc_voter UNIQUE (voter_id),
+-- The ABOVE signifies the values inserted into voter_id field must be unique
+-- The BELOW are foreign key constraints - on delete, the entire row will be deleted
+  CONSTRAINT fk_voter FOREIGN KEY (voter_id) REFERENCES voters(id) ON DELETE CASCADE,
+  CONSTRAINT fk_candidate FOREIGN KEY (candidate_id) REFERENCES candidates(id) ON DELETE CASCADE
+);
 --   this combines the candidates table with the parties table
 --   wherever
 -- SELECT * FROM candidates
